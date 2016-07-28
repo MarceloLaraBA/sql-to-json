@@ -1,0 +1,2 @@
+language: csharp
+solution: sql-to-json.sln
