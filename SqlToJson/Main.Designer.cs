@@ -75,15 +75,16 @@
             this.txSqlQuery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txSqlQuery.Location = new System.Drawing.Point(106, 38);
+            this.txSqlQuery.Multiline = true;
             this.txSqlQuery.Name = "txSqlQuery";
-            this.txSqlQuery.Size = new System.Drawing.Size(395, 20);
+            this.txSqlQuery.Size = new System.Drawing.Size(395, 59);
             this.txSqlQuery.TabIndex = 2;
             this.txSqlQuery.Text = "SELECT TOP 100 * FROM [regions]";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 67);
+            this.label3.Location = new System.Drawing.Point(42, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 5;
@@ -94,7 +95,7 @@
             // 
             this.txOutFile.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txOutFile.Location = new System.Drawing.Point(106, 64);
+            this.txOutFile.Location = new System.Drawing.Point(106, 103);
             this.txOutFile.Name = "txOutFile";
             this.txOutFile.Size = new System.Drawing.Size(395, 20);
             this.txOutFile.TabIndex = 4;
@@ -129,9 +130,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lvPreview.GridLines = true;
-            this.lvPreview.Location = new System.Drawing.Point(12, 91);
+            this.lvPreview.Location = new System.Drawing.Point(12, 128);
             this.lvPreview.Name = "lvPreview";
-            this.lvPreview.Size = new System.Drawing.Size(489, 132);
+            this.lvPreview.Size = new System.Drawing.Size(489, 95);
             this.lvPreview.TabIndex = 7;
             this.lvPreview.UseCompatibleStateImageBehavior = false;
             this.lvPreview.View = System.Windows.Forms.View.Details;
