@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -15,9 +16,27 @@ namespace SqlToJson
 {
     public partial class Main : Form
     {
+        private Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+        private void loadConfig()
+        {
+            txConnStr.Text = config.AppSettings.Settings["connStr"].Value;
+            txSqlQuery.Text = config.AppSettings.Settings["sqlQuery"].Value;
+            txOutFile.Text = config.AppSettings.Settings["targetFile"].Value;
+        }
+        private void saveConfig()
+        {
+            config.AppSettings.Settings["connStr"].Value = txConnStr.Text;
+            config.AppSettings.Settings["sqlQuery"].Value = txSqlQuery.Text;
+            config.AppSettings.Settings["targetFile"].Value = txOutFile.Text;
+            config.Save(ConfigurationSaveMode.Modified);
+        }
+
+
+
         public Main()
         {
             InitializeComponent();
+            loadConfig();
         }
 
         private DataTable sqlData = new DataTable();
@@ -26,6 +45,7 @@ namespace SqlToJson
         {
             this.Enabled = false;
             btnSave.Enabled = false;
+            saveConfig();
             try
             {
                 lvPreview.Items.Clear();
@@ -76,13 +96,23 @@ namespace SqlToJson
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (sqlData.Rows.Count == 0) {
+            saveConfig();
+            if (sqlData.Rows.Count == 0)
+            {
                 lblRowCount.Text = "no data to serialize!!";
                 return;
             }
-            string jsonResultStr = JsonConvert.SerializeObject(sqlData, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
-            System.IO.File.WriteAllText(txOutFile.Text, jsonResultStr);
-            lblRowCount.Text = string.Format("{0} items saved in {1}", sqlData.Rows.Count.ToString(), txOutFile.Text);
+
+            try
+            {
+                string jsonResultStr = JsonConvert.SerializeObject(sqlData, new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore });
+                System.IO.File.WriteAllText(txOutFile.Text, jsonResultStr);
+                lblRowCount.Text = string.Format("{0} items saved in {1}", sqlData.Rows.Count.ToString(), txOutFile.Text);
+            }
+            catch (Exception ex)
+            {
+                lblRowCount.Text = "ERR: " + ex.Message;
+            }
         }
 
     }

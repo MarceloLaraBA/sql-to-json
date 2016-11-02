@@ -49,7 +49,7 @@
             this.txConnStr.Name = "txConnStr";
             this.txConnStr.Size = new System.Drawing.Size(395, 20);
             this.txConnStr.TabIndex = 0;
-            this.txConnStr.Text = "Data Source=localhost;Initial Catalog=argentina;Integrated Security=true";
+            this.txConnStr.Text = "Data Source=Mxl1330g8t-srv;Initial Catalog=argentina;Integrated Security=true";
             // 
             // label1
             // 
@@ -98,7 +98,7 @@
             this.txOutFile.Name = "txOutFile";
             this.txOutFile.Size = new System.Drawing.Size(395, 20);
             this.txOutFile.TabIndex = 4;
-            this.txOutFile.Text = "C:\\Test\\jsonResults.json";
+            this.txOutFile.Text = "...";
             // 
             // btnPreview
             // 
